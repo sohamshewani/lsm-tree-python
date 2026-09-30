@@ -1,0 +1,16 @@
+import unittest
+
+from lsm_tree_python import LSMTree
+
+class TestLSMTree(unittest.TestCase):
+    def test_basic_operations(self):
+        lsm_tree = LSMTree()
+        lsm_tree.put(b'key1', b'value1')
+        lsm_tree.put(b'key2', b'value2')
+        self.assertEqual(lsm_tree.get(b'key1'), b'value1')
+        self.assertEqual(lsm_tree.get(b'key2'), b'value2')
+        lsm_tree.delete(b'key1')
+        self.assertIsNone(lsm_tree.get(b'key1'))
+
+if __name__ == '__main__':
+    unittest.main()
